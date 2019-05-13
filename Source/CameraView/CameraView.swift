@@ -187,7 +187,7 @@ class CameraView: UIViewController, CLLocationManagerDelegate, CameraManDelegate
 
   @objc func settingsButtonDidTap() {
     DispatchQueue.main.async {
-        if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
+      if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
         UIApplication.shared.openURL(settingsURL)
       }
     }
@@ -285,9 +285,7 @@ class CameraView: UIViewController, CLLocationManagerDelegate, CameraManDelegate
 
   @objc func pinchGestureRecognizerHandler(_ gesture: UIPinchGestureRecognizer) {
     switch gesture.state {
-    case .began:
-      fallthrough
-    case .changed:
+    case .began, .changed:
       zoomTo(gesture.scale)
     case .ended:
       zoomTo(gesture.scale)
